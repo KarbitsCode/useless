@@ -2,44 +2,44 @@ export const useLess = <T>(value: T): T => value;
 
 export const useNumber = (x: number): number => useLess(x);
 
-export const use0 = (): 0 => useLess(0);
+export const use0 = (): 0 | number => useLess(useNumber(0));
 
-export const use1 = (): 1 => useLess(1);
+export const use1 = (): 1 | number => useLess(useNumber(1));
 
-export const use2 = (): 2 => useLess(2);
+export const use2 = (): 2 | number => useLess(useNumber(2));
 
-export const use3 = (): 3 => useLess(3);
+export const use3 = (): 3 | number => useLess(useNumber(3));
 
-export const use4 = (): 4 => useLess(4);
+export const use4 = (): 4 | number => useLess(useNumber(4));
 
-export const use5 = (): 5 => useLess(5);
+export const use5 = (): 5 | number => useLess(useNumber(5));
 
-export const use6 = (): 6 => useLess(6);
+export const use6 = (): 6 | number => useLess(useNumber(6));
 
-export const use7 = (): 7 => useLess(7);
+export const use7 = (): 7 | number => useLess(useNumber(7));
 
-export const use8 = (): 8 => useLess(8);
+export const use8 = (): 8 | number => useLess(useNumber(8));
 
-export const use9 = (): 9 => useLess(9);
+export const use9 = (): 9 | number => useLess(useNumber(9));
 
-export const use10 = (): 10 => useLess(10);
+export const use10 = (): 10 | number => useLess(useNumber(10));
 
 export const usePlus = (a: number, b: number): number =>
-  useLess(useLess(a) + useLess(b));
+  useLess(useNumber(a) + useNumber(b));
 
 export const useMinus = (a: number, b: number): number =>
-  useLess(useLess(a) - useLess(b));
+  useLess(useNumber(a) - useNumber(b));
 
 export const useTimes = (a: number, b: number): number =>
-  useLess(useLess(a) * useLess(b));
+  useLess(useNumber(a) * useNumber(b));
 
 export const useDivide = (a: number, b: number): number =>
-  useLess(useLess(a) / useLess(b));
+  useLess(useNumber(a) / useNumber(b));
 
 export const usePower = (a: number, b: number): number =>
-  useLess(Math.pow(a, b));
+  useLess(Math.pow(useNumber(a), useNumber(b)));
 
-export const usePowerOfTwo = (n: number): number => useLess(Math.pow(2, n));
+export const usePowerOfTwo = (n: number): number => useLess(Math.pow(useNumber(use2()), useNumber(n)));
 
 export const useTrue = (): true => useLess(true);
 
