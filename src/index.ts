@@ -24,6 +24,10 @@ export const use9 = (): 9 | number => useLess(useNumber(9));
 
 export const use10 = (): 10 | number => useLess(useNumber(10));
 
+export const use100 = (): 100 | number => useLess(useNumber(100));
+
+export const use1000 = (): 1000 | number => useLess(useNumber(1000));
+
 export const usePlus = (a: number, b: number): number =>
   useLess(useNumber(a) + useNumber(b));
 
