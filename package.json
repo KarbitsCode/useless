@@ -1,5 +1,5 @@
 {
-  "name": "react-use-useless",
+  "name": "useless",
   "version": "1.0.0",
   "description": "A collection of useLess hooks",
   "main": "build/index.js",
