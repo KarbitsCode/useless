@@ -1,6 +1,6 @@
 export const useLess = <T>(value: T): T => value;
 
-export const useNumber = (x: number): number => useLess(x);
+export const useNumber = (x: number): number => useLess(Number(x));
 
 export const use0 = (): 0 | number => useLess(useNumber(0));
 
@@ -28,72 +28,95 @@ export const use100 = (): 100 | number => useLess(useNumber(100));
 
 export const use1000 = (): 1000 | number => useLess(useNumber(1000));
 
-export const usePlus = (a: number, b: number): number =>
-  useLess(useNumber(a) + useNumber(b));
+export const usePlus = (a: number, b: number): number => useLess(useNumber(useNumber(a) + useNumber(b)));
 
-export const useMinus = (a: number, b: number): number =>
-  useLess(useNumber(a) - useNumber(b));
+export const useMinus = (a: number, b: number): number => useLess(useNumber(useNumber(a) - useNumber(b)));
 
-export const useTimes = (a: number, b: number): number =>
-  useLess(useNumber(a) * useNumber(b));
+export const useTimes = (a: number, b: number): number => useLess(useNumber(useNumber(a) * useNumber(b)));
 
-export const useDivide = (a: number, b: number): number =>
-  useLess(useNumber(a) / useNumber(b));
+export const useDivide = (a: number, b: number): number => useLess(useNumber(useNumber(a) / useNumber(b)));
 
-export const usePower = (a: number, b: number): number =>
-  useLess(Math.pow(useNumber(a), useNumber(b)));
+export const useModulus = (a: number, b: number): number => useLess(useNumber(useNumber(a) % useNumber(b)));
 
-export const usePowerOfTwo = (n: number): number => useLess(Math.pow(useNumber(use2()), useNumber(n)));
+export const usePower = (a: number, b: number): number => useLess(useNumber(Math.pow(useNumber(a), useNumber(b))));
 
-export const useTrue = (): true => useLess(true);
+export const usePowerOfTwo = (n: number): number => useLess(useNumber(Math.pow(useNumber(use2()), useNumber(n))));
 
-export const useFalse = (): false => useLess(false);
+export const useFloor = (x: number): number => useLess(useNumber(Math.floor(useNumber(x))));
 
-export const useCondition = <T extends true | false>(value: T): T =>
-  useLess(value);
+export const useCeil = (x: number): number => useLess(useNumber(Math.ceil(useNumber(x))));
 
-export const useAnd = (a: boolean, b: boolean): boolean => useLess(a && b);
+export const useRound = (x: number): number => useLess(useNumber(Math.round(useNumber(x))));
 
-export const useOr = (a: boolean, b: boolean): boolean => useLess(a || b);
+export const useMax = (a: number, b: number): number => useLess(useNumber(Math.max(useNumber(a), useNumber(b))));
 
-export const useXOr = (a: boolean, b: boolean): boolean =>
-  useLess((a && !b) || (b && !a));
+export const useMin = (a: number, b: number): number => useLess(useNumber(Math.min(useNumber(a), useNumber(b))));
 
-export const useTernary = <T>(
-  condition: boolean,
-  valueIf: T,
-  valueElse: T,
-): T => useLess(condition ? valueIf : valueElse);
+export const useBoolean = (b: boolean): boolean => useLess(Boolean(b));
+
+export const useTrue = (): boolean | true => useLess(useBoolean(true));
+
+export const useFalse = (): boolean | false => useLess(useBoolean(false));
+
+export const useCondition = <T extends boolean>(value: T): T | boolean => useLess(useBoolean(value));
+
+export const useEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a == b));
+
+export const useStrictEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a === b));
+
+export const useNot = (b: boolean): boolean => useLess(useBoolean(!b));
+
+export const useAnd = (a: boolean, b: boolean): boolean => useLess(useBoolean(a && b));
+
+export const useNAnd = (a: boolean, b: boolean): boolean => useLess(useBoolean(useNot(useAnd(a, b))));
+
+export const useOr = (a: boolean, b: boolean): boolean => useLess(useBoolean(a || b));
+
+export const useNOr = (a: boolean, b: boolean): boolean => useLess(useBoolean(useNot(useOr(a, b))));
+
+export const useXOr = (a: boolean, b: boolean): boolean => useLess(useBoolean((a && !b) || (b && !a)));
+
+export const useNXOr = (a: boolean, b: boolean): boolean => useLess(useBoolean(useNot(useXOr(a, b))));
+
+export const useTernary = <T>(condition: boolean, valueIf: T, valueElse: T): T => useLess(useBoolean(condition) ? valueIf : valueElse);
 
 export const useUndefined = (): undefined => useLess(undefined);
 
 export const useNull = (): null => useLess(null);
 
-export const useString = (s: string): string => useLess(s);
+export const useString = (s: string): string => useLess(String(s));
 
-export const useConcat = (s1: string, s2: string): string =>
-  useLess(useLess(s1) + useLess(s2));
+export const useConcat = (s1: string, s2: string): string => useLess(useString(s1) + useString(s2));
 
-export const useStringLength = (s: string): number =>
-  useLess(useLess(s).length);
+export const useStringLength = (s: string): number => useLess(useString(s).length);
 
-export const useObject = <T extends object>(obj: T): T => useLess(obj);
+export const useTrim = (s: string): string => useLess(useString(s).trim());
 
-export const useArray = <T>(arr: T[]): T[] => useLess(arr);
+export const useToLowerCase = (s: string): string => useLess(useString(s).toLowerCase());
 
-export const useObjectProperty = <T, K extends keyof T>(obj: T, key: K): T[K] =>
-  useLess(obj[key]);
+export const useToUpperCase = (s: string): string => useLess(useString(s).toUpperCase());
 
-export const useArrayItem = <T>(arr: T[], key: number): T => useLess(arr[key]);
+export const useObject = <T extends object>(obj: T): T => useLess(Object(obj));
 
-export const useMap = <T, U>(arr: T[], fn: (t: T) => U): U[] =>
-  useLess(arr.map(fn));
+export const useObjectProperty = <T extends object, K extends keyof T>(obj: T, key: K): T[K] => useLess(useObject(obj)[key]);
 
-export const useFilter = <T>(arr: T[], fn: (t: T) => boolean): T[] =>
-  useLess(arr.filter(fn));
+export const useArray = <T>(arr: T[]): T[] => useLess(Array.prototype.slice.call(arr));
 
-export const useReduce = <T, V>(arr: T[], fn: (o: V, t: T) => V, init: V): V =>
-  useLess(arr.reduce(fn, init));
+export const useArrayItem = <T>(arr: T[], key: number): T => useLess(useArray(arr)[key]);
+
+export const useMap = <T, U>(arr: T[], fn: (t: T) => U): U[] => useLess(useArray(arr).map(fn));
+
+export const useFilter = <T>(arr: T[], fn: (t: T) => boolean): T[] => useLess(useArray(arr).filter(fn));
+
+export const useReduce = <T, V>(arr: T[], fn: (o: V, t: T) => V, init: V): V => useLess(useArray(arr).reduce(fn, init));
+
+export const useIncludes = <T>(arr: T[], value: T): boolean => useLess(useArray(arr).includes(value));
+
+export const useFind = <T>(arr: T[], fn: (t: T) => boolean): T | undefined => useLess(useArray(arr).find(fn));
+
+export const useSome = <T>(arr: T[], fn: (t: T) => boolean): boolean => useLess(useArray(arr).some(fn));
+
+export const useEvery = <T>(arr: T[], fn: (t: T) => boolean): boolean => useLess(useArray(arr).every(fn));
 
 export default {
   useLess,
@@ -115,25 +138,45 @@ export default {
   useMinus,
   useTimes,
   useDivide,
+  useModulus,
   usePower,
   usePowerOfTwo,
+  useFloor,
+  useCeil,
+  useRound,
+  useMax,
+  useMin,
+  useBoolean,
   useTrue,
   useFalse,
   useCondition,
+  useEqual,
+  useStrictEqual,
+  useNot,
   useAnd,
+  useNAnd,
   useOr,
+  useNOr,
   useXOr,
+  useNXOr,
   useTernary,
   useUndefined,
   useNull,
   useString,
   useConcat,
   useStringLength,
+  useTrim,
+  useToLowerCase,
+  useToUpperCase,
   useObject,
-  useArray,
   useObjectProperty,
+  useArray,
   useArrayItem,
   useMap,
   useFilter,
   useReduce,
+  useIncludes,
+  useFind,
+  useSome,
+  useEvery,
 };
