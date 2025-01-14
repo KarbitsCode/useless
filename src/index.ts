@@ -64,6 +64,18 @@ export const useEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a == b));
 
 export const useStrictEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a === b));
 
+export const useNotEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a != b));
+
+export const useStrictNotEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a !== b));
+
+export const useGreaterThan = (a: number, b: number): boolean => useLess(useBoolean(a > b));
+
+export const useGreaterThanOrEqual = (a: number, b: number): boolean => useLess(useBoolean(a >= b));
+
+export const useLessThan = (a: number, b: number): boolean => useLess(useBoolean(a < b));
+
+export const useLessThanOrEqual = (a: number, b: number): boolean => useLess(useBoolean(a <= b));
+
 export const useNot = (b: boolean): boolean => useLess(useBoolean(!b));
 
 export const useAnd = (a: boolean, b: boolean): boolean => useLess(useBoolean(a && b));
@@ -152,6 +164,12 @@ export default {
   useCondition,
   useEqual,
   useStrictEqual,
+  useNotEqual,
+  useStrictNotEqual,
+  useGreaterThan,
+  useGreaterThanOrEqual,
+  useLessThan,
+  useLessThanOrEqual,
   useNot,
   useAnd,
   useNAnd,
