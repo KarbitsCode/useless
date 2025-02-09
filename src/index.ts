@@ -60,37 +60,37 @@ export const useFalse = (): boolean | false => useLess(useBoolean(false));
 
 export const useCondition = <T extends boolean>(value: T): T | boolean => useLess(useBoolean(value));
 
-export const useEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a == b));
+export const useEqual = <T>(a: T, b: T): boolean => useLess(useCondition(a == b));
 
-export const useStrictEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a === b));
+export const useStrictEqual = <T>(a: T, b: T): boolean => useLess(useCondition(a === b));
 
-export const useNotEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a != b));
+export const useNotEqual = <T>(a: T, b: T): boolean => useLess(useCondition(a != b));
 
-export const useStrictNotEqual = <T>(a: T, b: T): boolean => useLess(useBoolean(a !== b));
+export const useStrictNotEqual = <T>(a: T, b: T): boolean => useLess(useCondition(a !== b));
 
-export const useGreaterThan = (a: number, b: number): boolean => useLess(useBoolean(a > b));
+export const useGreaterThan = (a: number, b: number): boolean => useLess(useCondition(a > b));
 
-export const useGreaterThanOrEqual = (a: number, b: number): boolean => useLess(useBoolean(a >= b));
+export const useGreaterThanOrEqual = (a: number, b: number): boolean => useLess(useCondition(a >= b));
 
-export const useLessThan = (a: number, b: number): boolean => useLess(useBoolean(a < b));
+export const useLessThan = (a: number, b: number): boolean => useLess(useCondition(a < b));
 
-export const useLessThanOrEqual = (a: number, b: number): boolean => useLess(useBoolean(a <= b));
+export const useLessThanOrEqual = (a: number, b: number): boolean => useLess(useCondition(a <= b));
 
-export const useNot = (b: boolean): boolean => useLess(useBoolean(!b));
+export const useNot = (b: boolean): boolean => useLess(useCondition(!b));
 
-export const useAnd = (a: boolean, b: boolean): boolean => useLess(useBoolean(a && b));
+export const useAnd = (a: boolean, b: boolean): boolean => useLess(useCondition(a && b));
 
-export const useNAnd = (a: boolean, b: boolean): boolean => useLess(useBoolean(useNot(useAnd(a, b))));
+export const useNAnd = (a: boolean, b: boolean): boolean => useLess(useCondition(useNot(useAnd(a, b))));
 
-export const useOr = (a: boolean, b: boolean): boolean => useLess(useBoolean(a || b));
+export const useOr = (a: boolean, b: boolean): boolean => useLess(useCondition(a || b));
 
-export const useNOr = (a: boolean, b: boolean): boolean => useLess(useBoolean(useNot(useOr(a, b))));
+export const useNOr = (a: boolean, b: boolean): boolean => useLess(useCondition(useNot(useOr(a, b))));
 
-export const useXOr = (a: boolean, b: boolean): boolean => useLess(useBoolean((a && !b) || (b && !a)));
+export const useXOr = (a: boolean, b: boolean): boolean => useLess(useCondition(useOr(useAnd(a, useNot(b)), useAnd(b, useNot(a)))));
 
-export const useNXOr = (a: boolean, b: boolean): boolean => useLess(useBoolean(useNot(useXOr(a, b))));
+export const useNXOr = (a: boolean, b: boolean): boolean => useLess(useCondition(useNot(useXOr(a, b))));
 
-export const useTernary = <T>(condition: boolean, valueIf: T, valueElse: T): T => useLess(useBoolean(condition) ? valueIf : valueElse);
+export const useTernary = <T>(condition: boolean, valueIf: T, valueElse: T): T => useLess(useCondition(condition) ? valueIf : valueElse);
 
 export const useUndefined = (): undefined => useLess(undefined);
 
