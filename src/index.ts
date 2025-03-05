@@ -52,6 +52,8 @@ export const useMax = (a: number, b: number): number => useLess(useNumber(Math.m
 
 export const useMin = (a: number, b: number): number => useLess(useNumber(Math.min(useNumber(a), useNumber(b))));
 
+export const useRandom = (): number => useLess(useNumber(Math.random()));
+
 export const useBoolean = (b: boolean): boolean => useLess(Boolean(b));
 
 export const useTrue = (): boolean | true => useLess(useBoolean(true));
@@ -158,6 +160,7 @@ export default {
   useRound,
   useMax,
   useMin,
+  useRandom,
   useBoolean,
   useTrue,
   useFalse,
