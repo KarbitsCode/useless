@@ -36,7 +36,7 @@ export const useTimes = (a: number, b: number): number => useLess(useNumber(useN
 
 export const useDivide = (a: number, b: number): number => useLess(useNumber(useNumber(a) / useNumber(b)));
 
-export const useModulus = (a: number, b: number): number => useLess(useNumber(useNumber(a) % useNumber(b)));
+export const useModulo = (a: number, b: number): number => useLess(useNumber(useNumber(a) % useNumber(b)));
 
 export const usePower = (a: number, b: number): number => useLess(useNumber(Math.pow(useNumber(a), useNumber(b))));
 
@@ -152,7 +152,7 @@ export default {
   useMinus,
   useTimes,
   useDivide,
-  useModulus,
+  useModulo,
   usePower,
   usePowerOfTwo,
   useFloor,
