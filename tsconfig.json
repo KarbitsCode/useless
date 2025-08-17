@@ -2,19 +2,13 @@
   "compilerOptions": {
     "target": "es2019",
     "module": "esnext",
-    "lib": [
-      "es5",
-      "esnext",
-      "dom"
-    ],
+    "lib": ["es5", "esnext", "dom"],
     "jsx": "preserve",
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
     "outDir": "build",
-    "rootDirs": [
-      "src"
-    ],
+    "rootDirs": ["src"],
     "importHelpers": true,
     "strict": true,
     "noUnusedLocals": true,
@@ -34,11 +28,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "exclude": [
-    "node_modules",
-    "build",
-  ],
-  "include": [
-    "src"
-  ]
+  "exclude": ["node_modules", "build"],
+  "include": ["src"]
 }

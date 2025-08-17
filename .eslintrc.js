@@ -23,6 +23,7 @@ module.exports = {
     sourceType: "module",
     jsx: true,
   },
+  ignorePatterns: ["build"],
   rules: {
     "prettier/prettier": [1, { trailingComma: "all", endOfLine: "auto" }],
     "@typescript-eslint/no-unused-vars": [1, { argsIgnorePattern: "^_" }],

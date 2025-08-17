@@ -90,8 +90,8 @@ There are even more specialized for complex cases:
 ```ts
 const p = useObjectProperty({ foo: "bar" }, "foo");
 const i = useArrayItem(["fizz", "buzz"], 1);
-const m = useMap(["fizz", "buzz"], t => t.toLowerCase());
-const f = useFilter(["fizz", "buzz"], t => t === "fizz");
+const m = useMap(["fizz", "buzz"], (t) => t.toLowerCase());
+const f = useFilter(["fizz", "buzz"], (t) => t === "fizz");
 const r = useReduce(["fizz", "buzz"], (s, t) => s + t, "");
 ```
 
@@ -105,7 +105,7 @@ Here's an example of using low-level `useLess` for accessing context:
 const useMyContext = () => {
   const myContext = useContext(MyContext);
   return useLess(myContext);
-}
+};
 ```
 
 Another more complex example with multiple higher-level hooks:
@@ -117,7 +117,7 @@ const useAppendLengthToString = (s: string): string => {
   const appended = useConcat(original, ` ${length}`);
 
   return useLess(appended);
-}
+};
 ```
 
 ### Is this for real?

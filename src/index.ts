@@ -132,22 +132,9 @@ export const useSome = <T>(arr: T[], fn: (t: T) => boolean): boolean => useLess(
 
 export const useEvery = <T>(arr: T[], fn: (t: T) => boolean): boolean => useLess(useArray(arr).every(fn));
 
-export default {
+const base = {
   useLess,
   useNumber,
-  use0,
-  use1,
-  use2,
-  use3,
-  use4,
-  use5,
-  use6,
-  use7,
-  use8,
-  use9,
-  use10,
-  use100,
-  use1000,
   usePlus,
   useMinus,
   useTimes,
@@ -200,4 +187,17 @@ export default {
   useFind,
   useSome,
   useEvery,
+};
+
+export default new Proxy(base, {
+  get: (target: typeof base, prop: string) => {
+    if (prop in target) {
+      return (target as any)[prop];
+    }
+    if (prop.startsWith("use") && !isNaN(Number(prop.slice(3)))) {
+      return useLess(useNumber(Number(prop.slice(3))));
+    }
+  },
+}) as typeof base & {
+  [key: string]: (...args: any[]) => any;
 };

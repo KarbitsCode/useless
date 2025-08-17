@@ -1,6 +1,6 @@
 {
   "name": "useless",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "A collection of useLess hooks",
   "main": "build/index.js",
   "scripts": {
@@ -13,18 +13,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/elierotenberg/useless.git"
+    "url": "git+https://github.com/KarbitsCode/useless.git"
   },
   "keywords": [
     "react",
     "hooks"
   ],
-  "author": "Elie Rotenberg <elie@rotenberg.io>",
+  "author": "KarbitsCode",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/elierotenberg/useless/issues"
+    "url": "https://github.com/KarbitsCode/useless/issues"
   },
-  "homepage": "https://github.com/elierotenberg/useless#readme",
+  "homepage": "https://github.com/KarbitsCode/useless#readme",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^2.31.0",
     "@typescript-eslint/parser": "^2.31.0",
