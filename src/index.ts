@@ -207,10 +207,14 @@ export default new Proxy(base, {
     if (prop in target) {
       return (target as any)[prop];
     }
-    if (prop.startsWith("use") && !isNaN(Number(prop.slice(3)))) {
-      return () => useLess(useNumber(Number(prop.slice(3))));
+    if (prop.length > 3 && prop.startsWith("use")) {
+      const arg = prop.slice(3);
+      const num = Number(arg);
+      return !(Number.isNaN(num) && arg !== "NaN")
+        ? (() => useLess(useNumber(num)))
+        : undefined;
     }
   },
 }) as typeof base & {
-  [key: string]: () => number;
+  [key: string]: typeof use0;
 };
