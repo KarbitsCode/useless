@@ -98,6 +98,8 @@ export const useUndefined = (): undefined => useLess(undefined);
 
 export const useNull = (): null => useLess(null);
 
+export const useTypeof = <T>(value: T): string => useLess(typeof value);
+
 export const useString = (s: string): string => useLess(String(s));
 
 export const useConcat = (s1: string, s2: string): string => useLess(useString(s1) + useString(s2));
@@ -181,6 +183,7 @@ const base = {
   useXOr,
   useNXOr,
   useTernary,
+  useTypeof,
   useUndefined,
   useNull,
   useString,
