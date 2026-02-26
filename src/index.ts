@@ -207,8 +207,8 @@ const base = {
 
 export default new Proxy(base, {
   get: (target: typeof base, prop: string) => {
-    if (prop in target) {
-      return (target as any)[prop];
+    if (Reflect.has(target, prop)) {
+      return Reflect.get(target, prop);
     }
     if (prop.length > 3 && prop.startsWith("use")) {
       const arg = prop.slice(3);
